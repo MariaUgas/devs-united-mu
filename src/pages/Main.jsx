@@ -1,11 +1,11 @@
 import React from "react";
 import { Route } from "react-router-dom";
-import Home from "./pages/Home";
-import Login from "./pages/Login";
-import NotFound from "./pages/NotFound";
-import Setting from "./pages/Setting";
+import Home from "./Home";
+import Login from "./Login";
+import NotFound from "./NotFound";
+import Setting from "./Setting";
 
-const App = () => {
+const Main = () => {
   return (
     <div>
       <Route exact path="/" component={Login} />
@@ -16,4 +16,4 @@ const App = () => {
   );
 };
 
-export default App;
+export default Main;
