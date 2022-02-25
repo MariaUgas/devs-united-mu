@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { firestore } from "../firebase";
 
 const Home = () => {
@@ -23,6 +24,7 @@ const Home = () => {
 
   return (
     <div className="App">
+      <Link to={`/`}>LOGIN</Link>
       <h1>Tweets:</h1>
       {tweets.map((tweet) => {
         return (

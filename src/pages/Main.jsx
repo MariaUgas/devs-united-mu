@@ -7,12 +7,12 @@ import Setting from "./Setting";
 
 const Main = () => {
   return (
-    <div>
+    <>
       <Route exact path="/" component={Login} />
       <Route path="/setting" component={Setting} />
       <Route path="/home" component={Home} />
       {/* <Route exact path="*" component={NotFound} /> */}
-    </div>
+    </>
   );
 };
 
