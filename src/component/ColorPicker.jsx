@@ -9,7 +9,7 @@ function ColorPicker() {
         key={color.name}
         className="config-color"
         style={{ backgroundColor: color.hex }}
-        onClick={() => setColor(color)}
+        onClick={() => setColor(color.name)}
       />
     );
   };

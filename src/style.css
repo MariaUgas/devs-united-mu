@@ -5,13 +5,11 @@
 }
 .body {
   background: #2e132c;
-  width: 100wh;
-  height: 100vh;
   display: flex;
-  flex-wrap: column;
 
   align-items: center;
   justify-content: space-around;
+  height: 100vh;
 }
 .logo {
   width: 30%;
@@ -104,6 +102,7 @@
   background-color: #00da76;
   margin: 2rem;
 }
+
 .nav-item {
   color: white;
   text-decoration: none;
@@ -113,4 +112,111 @@
   display: flex;
 
   justify-content: center;
+}
+
+/*  CREAR **/
+.bg-editor {
+  background: #150714;
+}
+.div-tweet {
+  display: flex;
+  flex-direction: row;
+  width: 700px;
+  align-content: space-around;
+  padding: 0.5rem 1rem;
+}
+.div-avatar {
+  display: flex;
+  justify-content: center;
+  flex: 1;
+}
+.div-editor {
+  flex: 3;
+}
+.avatar-48 {
+  width: 62px;
+  height: 62px;
+  border-radius: 50%;
+}
+.avatar-24 {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  width: 50px;
+}
+.avatar-96 {
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+}
+.text-form {
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+.text-msg {
+  width: 100%;
+  margin-bottom: 1rem;
+  color: white;
+}
+.btn-submit {
+  background-color: #00da76;
+  color: white;
+  width: 20%;
+}
+
+/*  FIN CREAR */
+.link-logout {
+  color: black;
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: bold;
+
+  display: flex;
+
+  justify-content: center;
+}
+
+.div-logout {
+  height: 30px;
+  width: 30%;
+  text-align: center;
+  background-color: #f50d5a;
+  margin: 1rem;
+}
+.hearder-display {
+  display: flex;
+  justify-content: space-between;
+}
+.rojo {
+  background: #f50d5a;
+  color: black;
+}
+.naranja {
+  background: #ff865c;
+  color: black;
+}
+.amarillo {
+  background: #ffea5c;
+  color: black;
+}
+.azul {
+  background: #0096ce;
+  color: black;
+}
+.verde {
+  background: #00da76;
+  color: black;
+}
+.purpura {
+  background: #800fff;
+  color: black;
+}
+.div-like {
+  color: white;
+  display: flex;
+}
+
+.conter-like {
+  padding-left: 1rem;
 }

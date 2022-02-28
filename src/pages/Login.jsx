@@ -1,43 +1,26 @@
 import React, { useContext, useEffect } from "react";
-import { Link } from "react-router-dom";
 import Setting from "./Setting";
-import { auth, loginGoogle, logoutGoogle } from "./../firebase";
+import { auth, loginGoogle } from "./../firebase";
 import { UserContext } from "../context/UserContext";
 import { PainterProvider } from "../context/PainterContext";
+import { Logo } from "../component/Logo";
 
 const Login = () => {
   const { user, setUser } = useContext(UserContext);
 
   useEffect(() => {
     auth.onAuthStateChanged((user) => {
-      console.log("Info del Usuario ", user);
       setUser(user);
     });
   });
 
   return user ? (
     <>
-      <PainterProvider>
-        <Setting />
-      </PainterProvider>
-      {/* <div>
-        <img className="flex-row-center" src="./../logoDevsUnited.svg"></img>
-        <div className="flex-col">
-          <img src={user.photoURL} alt="fotoPerfil" />
-          <p>!Hola {user.displayName}!</p>
-
-          <Link onClick={logoutGoogle} to={`/setting`}>
-            ir a configuracion
-          </Link>
-        </div>
-      </div> */}
+      <Setting />
     </>
   ) : (
     <>
-      <img
-        className="logo"
-        src="http://127.0.0.1:5500/src/logoDevsUnited.svg"
-      ></img>
+      <Logo />
       <div className="login">
         <div className="font-title">Lorem ipsum dolor</div>
         <div className="font-text">

@@ -12,8 +12,7 @@ export const colors = [
 export const PainterContext = createContext();
 
 export const PainterProvider = (props) => {
-  const [color, setColor] = useState(colors[0]);
-
+  const [color, setColor] = useState(colors[0].name);
   return (
     <PainterContext.Provider value={{ color, setColor }}>
       {props.children}

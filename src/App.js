@@ -9,10 +9,9 @@ import Setting from "./pages/Setting";
 const App = () => {
   return (
     <div className="body">
-      <Route exact path="/" component={Login} />
-      <Route path="/setting" component={Setting} />
-      <Route path="/home" component={Home} />
-      {/* <Route exact path="*" component={NotFound} /> */}
+      <Route exact path="/" render={() => <Login />} />
+      <Route path="/home" render={() => <Home />} />
+      {/* <Route exact path="*" component={NotFound} /> <Route path="/setting" component={Setting} />*/}
     </div>
   );
 };
