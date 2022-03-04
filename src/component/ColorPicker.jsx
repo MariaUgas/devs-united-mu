@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { colors, PainterContext } from "../context/PainterContext";
 
 function ColorPicker() {
+  /** TODO mejorar visualizacion de color que queda seleccionado */
   const { setColor } = useContext(PainterContext);
   const colorOption = (color) => {
     return (

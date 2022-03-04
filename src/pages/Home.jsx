@@ -1,11 +1,12 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { HiOutlineHeart } from "react-icons/hi";
+
 import { PainterContext } from "../context/PainterContext";
 import { UserContext } from "../context/UserContext";
 import { firestore } from "../firebase";
 import { logoutGoogle } from "./../firebase";
-import { BiLogOut, BiTrash } from "react-icons/bi";
+import { BiLogOut } from "react-icons/bi";
+import Tweet from "../component/Tweet";
 
 const Home = () => {
   const { user, username } = useContext(UserContext);
@@ -54,40 +55,6 @@ const Home = () => {
       })
       .catch((err) => console.error(err.message));
   };
-  const deleteTweet = (idDocTweet) => {
-    firestore
-      .collection("tweets")
-      .doc(idDocTweet)
-      .delete()
-      .then(() => {
-        getAllTweets();
-      })
-      .catch((err) => console.error(err.message));
-  };
-
-  const updateLikesTweet = (tweet) => {
-    console.log("ingresa a actualizar");
-    let arrayLikes = tweet.likes.length === 0 ? new Array() : tweet.likes;
-    if (arrayLikes.length === 0) {
-      arrayLikes.push(username);
-    } else {
-      let existe = "";
-      existe = arrayLikes.find((userId) => {
-        return username === userId;
-      });
-      if (existe === username) {
-        return;
-      }
-      arrayLikes.push(username);
-    }
-    firestore
-      .doc(`tweets/${tweet.id}`)
-      .update({ likes: arrayLikes })
-      .then(() => {
-        getAllTweets();
-      })
-      .catch((err) => console.error(err.message));
-  };
 
   useEffect(() => {
     getAllTweets();
@@ -104,10 +71,12 @@ const Home = () => {
   return (
     <div>
       <header className="hearder-display">
-        <img src={user.photoURL} alt="avatar-24" className="avatar-24" />
+        <Link to={`/user`}>
+          <img src={user.photoURL} alt="avatar-24" className="avatar-24" />
+        </Link>
 
         <div className="div-logout">
-          <Link className="link-logout" onClick={logoutGoogle} to={`/`}>
+          <Link className="link-logout pointer" onClick={logoutGoogle} to={`/`}>
             LOGOUT
             <BiLogOut></BiLogOut>
           </Link>
@@ -126,7 +95,7 @@ const Home = () => {
               placeholder="Ingrese un mensaje"
               name="message"
             ></textarea>
-            <input className="btn-submit" type="submit" value="Post" />
+            <input className="btn-submit pointer" type="submit" value="Post" />
           </div>
         </div>
       </form>
@@ -135,44 +104,12 @@ const Home = () => {
         {tweets.map((tweet) => {
           const own = tweet.username === username;
           return (
-            <>
-              <div className="div-tweet" id={tweet.id}>
-                <div className="div-avatar">
-                  <img
-                    src={tweet.image}
-                    alt="avatar-48"
-                    className="avatar-48"
-                  />
-                </div>
-                <div className="flex-col div-editor">
-                  <div className="flex-row-around">
-                    <div className="text-msg">
-                      {" "}
-                      <span className={tweet.color}>{tweet.username}</span>{" "}
-                      {tweet.date}
-                    </div>
-                    {own ? (
-                      <BiTrash
-                        className="text-msg"
-                        onClick={() => deleteTweet(tweet.id)}
-                      />
-                    ) : (
-                      <></>
-                    )}
-                  </div>
-                  <p className="text-msg" name="message">
-                    {tweet.message}
-                  </p>
-                  <div className="div-like">
-                    <HiOutlineHeart
-                      onClick={() => updateLikesTweet(tweet)}
-                    ></HiOutlineHeart>
-                    <div className="conter-like">{tweet.likes.length}</div>
-                  </div>
-                </div>
-              </div>
-              <hr />
-            </>
+            <Tweet
+              key={tweet.id}
+              tweet={tweet}
+              isOwn={own}
+              get={getAllTweets}
+            />
           );
         })}
       </div>

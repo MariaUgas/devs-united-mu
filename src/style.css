@@ -78,8 +78,14 @@
   display: inline-block;
   width: 50px;
   height: 50px;
-  border: 1px solid 2e132c;
+  border: 1px solid #2e132c;
 }
+
+.config-color:hover {
+  border: 1px solid #fff;
+  cursor: pointer;
+}
+
 .font-input {
   font-family: Roboto;
   font-size: 1rem;
@@ -219,4 +225,21 @@
 
 .conter-like {
   padding-left: 1rem;
+}
+
+.pointer {
+  cursor: pointer;
+}
+.nav-bar {
+  list-style-type: none;
+  display: flex;
+  justify-content: space-evenly;
+}
+.nav-item {
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: bold;
+  transition: 0.2s all;
+  border: solid 1px white;
 }
