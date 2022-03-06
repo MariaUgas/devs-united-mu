@@ -2,13 +2,16 @@ import React, { useContext, useEffect, useState } from "react";
 import { AiOutlineDoubleLeft } from "react-icons/ai";
 import { BiLogOut } from "react-icons/bi";
 import { Link } from "react-router-dom";
+//import AlertModal from "../component/AlertModal";
 import Tweet from "../component/Tweet";
+import { PainterContext } from "../context/PainterContext";
 import { UserContext } from "../context/UserContext";
 import { firestore, logoutGoogle } from "../firebase";
 import Favorites from "./Favorites";
 
 const MainUser = () => {
-  const { username } = useContext(UserContext);
+  const { username, user } = useContext(UserContext);
+  const { color } = useContext(PainterContext);
 
   const [tweets, setTweets] = useState([]);
   const [isFavorite, setFavorite] = useState(false);
@@ -44,7 +47,7 @@ const MainUser = () => {
     <div>
       <header className="hearder-display">
         <Link to="/home" className="sin-subrayado">
-          <AiOutlineDoubleLeft className="text-msg pointer" />
+          <AiOutlineDoubleLeft size={24} className="text-msg pointer" />
         </Link>
 
         <div className="div-logout">
@@ -54,10 +57,24 @@ const MainUser = () => {
           </Link>
         </div>
       </header>
-      <nav className="amarillo">
+      <nav className="bg-editor">
+        <div className="nav-div">
+          <img src={user.photoURL} alt="avatar-96" className="avatar-96" />
+          <span className={`${color}  font-text m-botton`}>{username}</span>
+        </div>
         <ul className="nav-bar">
-          <li onClick={() => setFavorite(false)}>POST</li>
-          <li onClick={() => setFavorite(true)}>FAVORITES</li>
+          <li
+            className={isFavorite ? "nav-li pointer" : "nav-li-active pointer"}
+            onClick={() => setFavorite(false)}
+          >
+            POST
+          </li>
+          <li
+            className={isFavorite ? "nav-li-active pointer" : "nav-li  pointer"}
+            onClick={() => setFavorite(true)}
+          >
+            FAVORITES
+          </li>
         </ul>
       </nav>
       <hr />

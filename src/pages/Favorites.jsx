@@ -36,20 +36,12 @@ const Favorites = (deleteTweet, updateLikesTweet, own) => {
 
   return (
     <div>
-      <hr />
-      <div className="App">
-        {tweets.map((tweet) => {
-          const own = tweet.username === username;
-          return (
-            <Tweet
-              key={tweet.id}
-              tweet={tweet}
-              isOwn={own}
-              get={getUserTweets}
-            />
-          );
-        })}
-      </div>
+      {tweets.map((tweet) => {
+        const own = tweet.username === username;
+        return (
+          <Tweet key={tweet.id} tweet={tweet} isOwn={own} get={getUserTweets} />
+        );
+      })}
     </div>
   );
 };

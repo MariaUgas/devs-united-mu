@@ -7,14 +7,12 @@ import { UserProvider } from "./context/UserContext";
 import { PainterProvider } from "./context/PainterContext";
 
 ReactDOM.render(
-  <React.StrictMode>
-    <BrowserRouter>
-      <UserProvider>
-        <PainterProvider>
-          <App />
-        </PainterProvider>
-      </UserProvider>
-    </BrowserRouter>
-  </React.StrictMode>,
+  <BrowserRouter>
+    <UserProvider>
+      <PainterProvider>
+        <App />
+      </PainterProvider>
+    </UserProvider>
+  </BrowserRouter>,
   document.getElementById("root")
 );

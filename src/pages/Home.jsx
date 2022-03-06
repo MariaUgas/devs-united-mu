@@ -15,27 +15,27 @@ const Home = () => {
   const [tweets, setTweets] = useState([]);
   const [infoTweet, setInfoTweet] = useState({});
 
-  const getAllTweets = () => {
-    firestore
+  const getAllTweets = async () => {
+    let peticion = await firestore
       .collection("tweets")
       .limit(30)
       .orderBy("date", "desc")
-      .get()
-      .then((snapshot) => {
-        const tweetsArray = snapshot.docs.map((doc) => {
-          return {
-            message: doc.data().message,
-            username: doc.data().username,
-            likes: doc.data().likes || 0,
-            image: doc.data().image || false,
-            id: doc.id,
-            date: doc.data().date,
-            color: doc.data().colorTheme,
-          };
-        });
-        setTweets(tweetsArray);
-      });
+      .get();
+
+    const tweetsArray = peticion.docs.map((doc) => {
+      return {
+        message: doc.data().message,
+        username: doc.data().username,
+        likes: doc.data().likes || [],
+        image: doc.data().image || false,
+        id: doc.id,
+        date: doc.data().date,
+        color: doc.data().colorTheme,
+      };
+    });
+    setTweets(tweetsArray);
   };
+
   const createTweet = (e) => {
     e.preventDefault();
 
@@ -48,7 +48,7 @@ const Home = () => {
         username: username,
         colorTheme: color,
         date: new Date().valueOf(),
-        likes: new Array(),
+        likes: [],
       })
       .then(() => {
         getAllTweets();
@@ -76,10 +76,14 @@ const Home = () => {
         </Link>
 
         <div className="div-logout">
-          <Link className="link-logout pointer" onClick={logoutGoogle} to={`/`}>
+          <Link
+            className="link-logout pointer  "
+            onClick={logoutGoogle}
+            to={`/`}
+          >
             LOGOUT
-            <BiLogOut></BiLogOut>
           </Link>
+          <BiLogOut size={20}></BiLogOut>
         </div>
       </header>
       <hr />

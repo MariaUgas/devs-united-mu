@@ -24,6 +24,17 @@
   justify-content: center;
   align-items: center;
 }
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.div-google {
+  background: white;
+  width: 36px;
+  height: 36px;
+  padding: 5px;
+}
 
 .flex-row-around {
   display: flex;
@@ -53,10 +64,17 @@
 
   color: #ffffff;
 }
+.p-text {
+  padding: 2.56rem 0;
+}
+
+.m-botton {
+  margin-bottom: 1rem;
+}
 
 .font-button-google {
   font-family: Roboto;
-  font-size: 1rem;
+
   font-style: normal;
   font-weight: 500;
   height: 40px;
@@ -64,7 +82,15 @@
   text-align: center;
   background-color: #4285f4;
   color: #ffffff;
-  margin: 2rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-right: 12px;
+}
+
+.spam-google {
+  font-size: 1rem;
 }
 .log-google {
   width: 1.5rem;
@@ -109,6 +135,12 @@
   margin: 2rem;
 }
 
+.nav-div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0.5 rem;
+}
 .nav-item {
   color: white;
   text-decoration: none;
@@ -118,6 +150,11 @@
   display: flex;
 
   justify-content: center;
+  height: 100%;
+}
+.a-config {
+  position: relative;
+  line-height: 40px;
 }
 
 /*  CREAR **/
@@ -127,7 +164,7 @@
 .div-tweet {
   display: flex;
   flex-direction: row;
-  width: 700px;
+  width: 500px;
   align-content: space-around;
   padding: 0.5rem 1rem;
 }
@@ -154,6 +191,7 @@
   width: 96px;
   height: 96px;
   border-radius: 50%;
+  margin: 1rem;
 }
 .text-form {
   width: 100%;
@@ -182,13 +220,18 @@
 
   justify-content: center;
 }
-
+.left-chevron {
+  height: 30px;
+  margin-top: 8px;
+}
 .div-logout {
+  display: flex;
+  justify-content: center;
   height: 30px;
   width: 30%;
   text-align: center;
   background-color: #f50d5a;
-  margin: 1rem;
+  align-items: center;
 }
 .hearder-display {
   display: flex;
@@ -235,11 +278,78 @@
   display: flex;
   justify-content: space-evenly;
 }
-.nav-item {
-  color: white;
+.nav-li {
+  color: #60265b;
   text-decoration: none;
   font-size: 18px;
   font-weight: bold;
-  transition: 0.2s all;
-  border: solid 1px white;
+
+  width: 100%;
+  text-align: center;
+}
+
+.nav-li-active {
+  background: #60265b;
+  color: #150714;
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: bold;
+
+  width: 100%;
+  text-align: center;
+}
+
+/* MODAL **/
+.modal-contenido {
+  background-color: #60265b;
+  color: white;
+  width: 350px;
+  height: 180px;
+  padding: 10px 20px;
+  margin: 20% auto;
+  position: relative;
+}
+.modal {
+  background-color: rgba(0, 0, 0, 0.8);
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 1s;
+}
+
+.modal-button {
+  background-color: #150714;
+  border: solid 1px black;
+  border-radius: 10%;
+  color: white;
+  width: 80px;
+  height: 30px;
+}
+.a-modal {
+  text-decoration: none;
+  color: white;
+}
+.modal-div-btn {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+#miModal:target {
+  opacity: 1;
+  pointer-events: auto;
+}
+.contenido {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  width: 100%;
+  height: 100%;
+}
+.m-btn {
+  margin: 0 0.5rem;
 }
