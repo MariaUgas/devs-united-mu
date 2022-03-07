@@ -2,7 +2,6 @@ import React, { useContext, useEffect, useState } from "react";
 import { AiOutlineDoubleLeft } from "react-icons/ai";
 import { BiLogOut } from "react-icons/bi";
 import { Link } from "react-router-dom";
-//import AlertModal from "../component/AlertModal";
 import Tweet from "../component/Tweet";
 import { PainterContext } from "../context/PainterContext";
 import { UserContext } from "../context/UserContext";
@@ -17,7 +16,6 @@ const MainUser = () => {
   const [isFavorite, setFavorite] = useState(false);
 
   const getUserTweets = () => {
-    console.log(username);
     firestore
       .collection("tweets")
       .where("username", "==", username)
@@ -43,6 +41,7 @@ const MainUser = () => {
   useEffect(() => {
     getUserTweets();
   }, []);
+
   return (
     <div>
       <header className="hearder-display">

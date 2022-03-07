@@ -7,6 +7,7 @@ import { firestore } from "../firebase";
 import { logoutGoogle } from "./../firebase";
 import { BiLogOut } from "react-icons/bi";
 import Tweet from "../component/Tweet";
+import NotFound from "./NotFound";
 
 const Home = () => {
   const { user, username } = useContext(UserContext);
@@ -68,7 +69,11 @@ const Home = () => {
     setInfoTweet(newTweet);
   };
 
-  return (
+  return Object.keys(user).length === 0 ? (
+    <>
+      <NotFound />
+    </>
+  ) : (
     <div>
       <header className="hearder-display">
         <Link to={`/user`}>

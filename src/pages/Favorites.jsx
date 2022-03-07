@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import Tweet from "../component/Tweet";
-import { firestore, logoutGoogle } from "../firebase";
+import { firestore } from "../firebase";
 import { UserContext } from "../context/UserContext";
 
 const Favorites = (deleteTweet, updateLikesTweet, own) => {
